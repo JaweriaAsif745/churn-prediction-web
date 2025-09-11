@@ -156,6 +156,11 @@ def predict():
         return jsonify({"error": "Internal server error", "detail": str(exc)}), 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  
-    print(f"Starting Flask app on port {port}. Frontend folder: {FRONTEND_DIR}")
-    app.run(host="0.0.0.0", port=port, debug=False)
+    # Run from backend directory. Listen only on localhost by default.
+    print("Starting Flask app (debug mode). Frontend folder:", FRONTEND_DIR)
+    app.run(host="127.0.0.1", port=5000, debug=True)
+    
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 5000))  
+#     print(f"Starting Flask app on port {port}. Frontend folder: {FRONTEND_DIR}")
+#     app.run(host="0.0.0.0", port=port, debug=False)
